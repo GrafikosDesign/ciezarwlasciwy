@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ciężar Właściwy – siłownia w Łodzi</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Familjen+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cobalt:#2339F0;--navy:#0C1466;--bone:#F1EEE6;--sun:#FFE14D;--soft:#6A7BFF;
+--fd:'Big Shoulders Display','Arial Narrow',sans-serif;--fb:'Familjen Grotesk',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bone:#EDEAE1}}
+:root[data-theme="dark"]{--bone:#EDEAE1}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--bone);font:400 1.0625rem/1.55 var(--fb)}
+a{color:inherit}
+::selection{background:var(--sun);color:var(--navy)}
+html{scrollbar-color:var(--sun) var(--navy)}
+:root{interpolate-size:allow-keywords}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{padding-inline:clamp(1.25rem,5vw,4rem)}
+.btn{display:inline-block;background:var(--sun);color:var(--navy);font:600 1.05rem var(--fb);padding:1rem 1.6rem;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(12,20,102,.4)}
+h1,h2{font-family:var(--fd);font-weight:900;text-transform:uppercase;margin:0;letter-spacing:-.01em}
+
+/* hero */
+.hero{background:var(--cobalt);min-height:100svh;display:flex;flex-direction:column;padding-block:1.5rem 3rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:600}
+.logo{font:900 1.5rem var(--fd);text-transform:uppercase;text-decoration:none}
+.hero h1{font-size:clamp(3.6rem,16.5vw,12rem);line-height:.86;margin-top:auto;padding-top:3rem}
+.ln{display:block;overflow:hidden;padding-top:.14em;margin-top:-.14em}
+.ln>span{display:block;transform:translateY(108%);animation:up 1s cubic-bezier(.2,.8,.1,1) forwards;animation-delay:calc(var(--i)*.13s + .2s)}
+@keyframes up{to{transform:none}}
+.hero-foot{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:flex-end;justify-content:space-between;margin-top:2.5rem}
+.hero-foot p{margin:0;max-width:34ch;font-size:1.2rem}
+.facts{display:flex;gap:2rem;font-weight:500}
+.facts b{display:block;font:800 2.2rem/1 var(--fd)}
+
+/* barbell */
+.load{height:560vh;position:relative}
+.pin{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;overflow:hidden}
+.pin h2{font-size:clamp(1.8rem,4.5vw,3.4rem);max-width:22ch;min-height:2.2em}
+#bb{width:100%;height:auto;max-height:42svh;display:block}
+.kg{display:flex;align-items:baseline;gap:.6rem;font-family:var(--fd);font-weight:900;line-height:.8}
+.kg b{font-size:clamp(6rem,26vw,20rem);font-variant-numeric:tabular-nums;color:var(--sun)}
+.kg span{font-size:clamp(1.8rem,5vw,4rem)}
+.kg-row{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem}
+.scroll-hint{font-size:.95rem;opacity:.75;max-width:16ch;text-align:right}
+
+/* zones */
+.zones{background:var(--bone);color:var(--navy);padding-block:clamp(4rem,10vw,8rem)}
+.zones h2{font-size:clamp(2.6rem,8vw,6rem);line-height:.9;max-width:12ch;margin-bottom:3rem}
+details{border-top:3px solid var(--navy)}
+details:last-of-type{border-bottom:3px solid var(--navy)}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;padding:1.2rem 0;font:800 clamp(1.8rem,5vw,3.6rem)/1 var(--fd);text-transform:uppercase;transition:padding .25s,color .25s}
+summary::-webkit-details-marker{display:none}
+summary:hover{padding-left:1rem;color:var(--cobalt)}
+summary i{font:500 1.05rem var(--fb);font-style:normal;margin-left:auto}
+summary::after{content:"+";font-size:2rem;transition:transform .3s;width:2rem;text-align:center}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0;padding:0 0 1.6rem;max-width:52ch}
+details::details-content{block-size:0;overflow:clip;transition:block-size .45s cubic-bezier(.2,.8,.1,1),content-visibility .45s allow-discrete}
+details[open]::details-content{block-size:auto}
+
+
+/* plans */
+.plans{background:var(--cobalt);padding-block:clamp(4rem,10vw,8rem)}
+.plans h2{font-size:clamp(2.6rem,8vw,6rem);line-height:.9;margin-bottom:2rem}
+.tog{display:inline-flex;border:3px solid var(--bone);margin-bottom:3rem}
+.tog button{font:600 1rem var(--fb);padding:.7rem 1.2rem;background:none;color:var(--bone);border:0;cursor:pointer;transition:background .25s,color .25s}
+.tog button[aria-pressed="true"]{background:var(--bone);color:var(--cobalt)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);border:3px solid var(--bone)}
+.plan{padding:2rem clamp(1.2rem,2.5vw,2.2rem) 2.4rem;display:flex;flex-direction:column;gap:1rem}
+.plan+.plan{border-left:3px solid var(--bone)}
+.plan.hot{background:var(--sun);color:var(--navy)}
+.plan h3{font:800 2rem var(--fd);margin:0;text-transform:uppercase}
+.price{font:900 5rem/1 var(--fd);font-variant-numeric:tabular-nums}
+.price small{font:500 1rem var(--fb)}
+.plan ul{margin:0;padding-left:1.1rem}
+.plan .btn{margin-top:auto;text-align:center;background:var(--navy);color:var(--bone)}
+.plan:not(.hot) .btn{background:var(--bone);color:var(--cobalt)}
+
+/* curtains: sections are drawn up over the previous one as they enter */
+@supports (animation-timeline:view()){
+.zones,.plans,.end{animation:curtain linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+@keyframes curtain{from{clip-path:inset(14% 5% 0 5% round 28px 28px 0 0)}to{clip-path:inset(0 0 0 0 round 0)}}
+}
+#bb.hit{animation:hit .4s cubic-bezier(.2,.8,.1,1)}
+@keyframes hit{0%{transform:translateY(7px)}100%{transform:none}}
+/* footer */
+.end{padding-block:clamp(4rem,10vw,8rem) 3rem}
+.end h2{font-size:clamp(3rem,10vw,6rem);line-height:.86;margin-bottom:2rem}
+.end .row{display:flex;flex-wrap:wrap;gap:1rem 3rem;margin-top:3rem;font-weight:500}
+
+@media (max-width:760px){
+.grid{grid-template-columns:1fr}.plan+.plan{border-left:0;border-top:3px solid var(--bone)}
+.facts{gap:1.2rem}.scroll-hint{display:none}
+summary i{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}.ln>span{animation:none;transform:none}details p{animation:none}.btn,summary,details::details-content{transition:none}.zones,.plans,.end,#bb{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="top"><a class="logo" href="#">Ciężar Właściwy</a><a href="#karnety">Karnety</a></div>
+  <h1><span class="ln"><span style="--i:0">Dźwigaj</span></span><span class="ln"><span style="--i:1">swój ciężar</span></span><span class="ln"><span style="--i:2">właściwy.</span></span></h1>
+  <div class="hero-foot">
+    <p>Siłownia w centrum Łodzi dla ludzi, którzy lubią żelazo. Otwarta całą dobę, z trenerami od rana do wieczora.</p>
+    <div class="facts"><div><b>24/7</b>wejście</div><div><b>560 m²</b>treningu</div></div>
+    <a class="btn" href="#start">Umów wejście próbne</a>
+  </div>
+</header>
+
+<section class="load" id="load" aria-label="Przewijaj, aby załadować sztangę">
+  <div class="pin wrap">
+    <h2 id="cap">Sam gryf. Wszyscy zaczynają od 20 kg.</h2>
+    <svg id="bb" viewBox="0 0 900 320" role="img" aria-label="Sztanga, na którą wskakują kolejne talerze"></svg>
+    <div class="kg-row">
+      <div class="kg"><b id="kg">20</b><span>kg</span></div>
+      <div class="scroll-hint">Przewijaj, żeby dokładać talerze</div>
+    </div>
+  </div>
+</section>
+
+<section class="zones wrap">
+  <h2>Cztery strefy do treningu</h2>
+  <details name="z" open><summary>Wolne ciężary <i>180 m²</i></summary><p>Sześć stojaków, gryfy 15 i 20 kg, hantle do 60 kg i kalibrowane talerze. Magnezja stoi przy każdym stojaku.</p></details>
+  <details name="z"><summary>Platformy <i>90 m²</i></summary><p>Dwie drewniane platformy do martwego ciągu i rwania oraz strefa na opony, sanie i worki.</p></details>
+  <details name="z"><summary>Maszyny i cardio <i>210 m²</i></summary><p>Maszyny na każdą partię mięśni, bieżnie, wiosła i rowery. Rano i wieczorem trenerzy pokażą, jak z nich korzystać.</p></details>
+  <details name="z"><summary>Regeneracja <i>80 m²</i></summary><p>Maty, rollery i sauna sucha. Rozciągaj się po treningu, a nie zamiast niego.</p></details>
+</section>
+
+<section class="plans wrap" id="karnety">
+  <h2>Karnety</h2>
+  <div class="tog" role="group" aria-label="Okres rozliczenia">
+    <button type="button" data-m="0" aria-pressed="true">Miesięcznie</button>
+    <button type="button" data-m="1" aria-pressed="false">Rocznie, 20% taniej</button>
+  </div>
+  <div class="grid">
+    <article class="plan"><h3>Poranny</h3><div class="price"><span data-p="89,71">89</span> <small>zł / mies.</small></div><ul><li>Wejścia 6:00–12:00</li><li>Wszystkie strefy</li><li>Szafka dzienna</li></ul><a class="btn" href="#start">Wybieram Poranny</a></article>
+    <article class="plan hot"><h3>Całodobowy</h3><div class="price"><span data-p="139,111">139</span> <small>zł / mies.</small></div><ul><li>Wejście o każdej porze</li><li>Wszystkie strefy i sauna</li><li>Plan treningowy od trenera</li></ul><a class="btn" href="#start">Wybieram Całodobowy</a></article>
+    <article class="plan"><h3>Dla dwojga</h3><div class="price"><span data-p="239,191">239</span> <small>zł / mies.</small></div><ul><li>Dwie osoby, wejście całodobowe</li><li>Wspólne konsultacje</li><li>Sauna w cenie</li></ul><a class="btn" href="#start">Wybieram Dla dwojga</a></article>
+  </div>
+</section>
+
+<footer class="end wrap" id="start">
+  <h2>Pierwszy trening gratis</h2>
+  <a class="btn" href="tel:+48420000000">Zadzwoń i umów termin</a>
+  <div class="row"><span>ul. Piotrkowska 120, Łódź</span><span>tel. 42 000 00 00</span><span>kontakt@ciezar-wlasciwy.example</span></div>
+</footer>
+
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;var plates=[{kg:20,h:300,w:30,c:'#F1EEE6'},{kg:20,h:300,w:28,c:'#F1EEE6'},{kg:15,h:236,w:24,c:'#FFE14D'},{kg:10,h:184,w:20,c:'#6A7BFF'},{kg:5,h:136,w:16,c:'#F1EEE6'},{kg:2.5,h:96,w:12,c:'#FFE14D'}];
+  var caps=['Sam gryf. Wszyscy zaczynają od 20 kg.','Pierwsze talerze. Technika ważniejsza niż ciężar.','Dokładasz z głową. Trener stoi obok.','Robi się poważnie. Asekuracja na platformie.','Prawie tam. Każdy kilogram zapisany w dzienniku.','Ostatnie połówki. Oddech, chwyt, ruch.','Twój rekord. Zapisujemy go na ścianie.'];
+  var svg=document.getElementById('bb'),s='<rect x="20" y="152" width="860" height="16" fill="#F1EEE6" opacity=".85"/><rect x="290" y="146" width="10" height="28" fill="#F1EEE6"/><rect x="600" y="146" width="10" height="28" fill="#F1EEE6"/>';
+  var off=0;
+  plates.forEach(function(p,i){
+    var lx=290-off-p.w,rx=610+off;off+=p.w+3;
+    s+='<g class="L"><rect x="'+lx+'" y="'+(160-p.h/2)+'" width="'+p.w+'" height="'+p.h+'" rx="4" fill="'+p.c+'"/></g>';
+    s+='<g class="R"><rect x="'+rx+'" y="'+(160-p.h/2)+'" width="'+p.w+'" height="'+p.h+'" rx="4" fill="'+p.c+'"/></g>';
+  });
+  svg.innerHTML=s;
+  var L=svg.querySelectorAll('.L'),R=svg.querySelectorAll('.R'),sec=document.getElementById('load'),kg=document.getElementById('kg'),cap=document.getElementById('cap'),last=-1,tick=false;
+  var N=plates.length;
+  function upd(){
+    tick=false;
+    var r=sec.getBoundingClientRect(),p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight))),w=20,shown=0;
+    plates.forEach(function(pl,i){
+      var t=Math.min(1,Math.max(0,p*(N+.8)-i)),e=1-Math.pow(1-t,3),b=1+2.4*Math.pow(t-1,3)+1.4*Math.pow(t-1,2);
+      L[i].style.transform='translateX('+(-(1-b)*560)+'px)';R[i].style.transform='translateX('+((1-b)*560)+'px)';
+      L[i].style.opacity=R[i].style.opacity=e;
+      w+=2*pl.kg*e;if(t>=1)shown++;
+    });
+    kg.textContent=Math.round(w);
+    if(shown!==last){if(last>=0&&shown>last&&!rm){svg.classList.remove('hit');void svg.getBoundingClientRect();svg.classList.add('hit');}last=shown;cap.textContent=caps[shown];}
+  }
+  function req(){if(!tick){tick=true;requestAnimationFrame(upd);}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);upd();
+
+  function roll(el,to){var from=+el.textContent,t0=performance.now();if(rm){el.textContent=to;return}(function f(n){var k=Math.min(1,(n-t0)/500),e=1-Math.pow(1-k,4);el.textContent=Math.round(from+(to-from)*e);if(k<1)requestAnimationFrame(f)})(t0)}
+  var btns=document.querySelectorAll('.tog button'),prices=document.querySelectorAll('[data-p]');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var m=+b.dataset.m;
+    btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    prices.forEach(function(el){roll(el,+el.dataset.p.split(',')[m])});
+  })});
+})();
+</script>
+</body>
+</html>
